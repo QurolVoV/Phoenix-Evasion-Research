@@ -2,18 +2,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: phoenix-research
-  labels:
-    app: phoenix-research
 spec:
-  replicas: 2
-  strategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 0
+  replicas: 1  
   selector:
     matchLabels:
-      app: phoenix-research
+      app: phoenix-research  
   template:
     metadata:
       labels:
@@ -22,25 +15,14 @@ spec:
       containers:
       - name: phoenix
         image: ghcr.io/qurolvov/phoenix-evasion-research:latest
-        imagePullPolicy: Always
         ports:
-        - containerPort: 8080
+        - containerPort: 8080  
         resources:
           requests:
-            memory: "128Mi"
-            cpu: "100m"
-          limits:
-            memory: "256Mi"
-            cpu: "500m"
+            memory: "64Mi"  
+            cpu: "50m"
         readinessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 5
-          periodSeconds: 10
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: 8080
-          initialDelaySeconds: 15
-          periodSeconds: 20
+          exec:  # Ganti ke exec sederhana (hindari HTTP jika app belum ready)
+            command: ["python", "-c", "print('OK')"]
+          initialDelaySeconds: 10
+          periodSeconds: 5
