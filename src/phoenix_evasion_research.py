@@ -8,6 +8,7 @@ Copyright (c) 2025 - Woodlabs Security Research
 
 __version__ = "1.0.0"
 __author__ = "QurolVoV - Woodlabs Security Research"
+__license__ = "MIT"
 
 import platform
 import sys
@@ -156,7 +157,8 @@ def validate_target_url(target: str) -> bool:
     try:
         result = urlparse(target)
         return all([result.scheme in ['http', 'https'], result.netloc])
-    except:
+    except Exception as e:
+        logger.debug(f"URL validation error: {e}")
         return False
 
 def get_system_info() -> dict:
@@ -188,7 +190,7 @@ class LazyImporter:
             'ti': 'time', 'ra': 'random', 'os': 'os', 'sy': 'sys'
         }
     
-    def __getattr__(self, name):
+    def __getattr__(self, name: str):
         if name in self._import_map:
             if name not in self._loaded_modules:
                 module_name = self._import_map[name]
@@ -207,7 +209,7 @@ class PhoenixObfuscator:
     on each instance and not persistent. Do NOT use in production.
     """
     
-    def __init__(self):
+    def __init__(self) -> None:
         self.master_key = secrets.token_bytes(64)
         self.nonce_tracker = {}
         self.cache_lock = threading.Lock()
@@ -216,7 +218,7 @@ class PhoenixObfuscator:
         threading.Thread(target=self._cleanup_nonces, daemon=True).start()
         logger.info("PhoenixObfuscator initialized")
     
-    def _cleanup_nonces(self):
+    def _cleanup_nonces(self) -> None:
         """Cleanup expired nonces periodically"""
         while True:
             time.sleep(300)
@@ -233,7 +235,14 @@ class PhoenixObfuscator:
                         del self.nonce_tracker[nonce]
     
     def obfuscate_string(self, plaintext: str) -> bytes:
-        """Obfuscate a string using ChaCha20-Poly1305"""
+        """Obfuscate a string using ChaCha20-Poly1305
+        
+        Args:
+            plaintext: String to obfuscate
+            
+        Returns:
+            Encrypted bytes containing nonce, salt, inner_nonce, and ciphertext
+        """
         data = plaintext.encode('utf-8')
         nonce = secrets.token_bytes(8)
         with self.cache_lock:
@@ -247,7 +256,14 @@ class PhoenixObfuscator:
         return nonce + salt + inner_nonce + ciphertext
     
     def deobfuscate_string(self, blob: bytes) -> str:
-        """Deobfuscate an obfuscated string"""
+        """Deobfuscate an obfuscated string
+        
+        Args:
+            blob: Encrypted bytes from obfuscate_string
+            
+        Returns:
+            Decrypted string or error message
+        """
         try:
             nonce, salt, inner_nonce, ciphertext = (blob[:8], blob[8:24], 
                                                     blob[24:36], blob[36:])
@@ -271,10 +287,12 @@ class HadesSyscallEngine:
     graceful defaults.
     """
     
-    def __init__(self):
+    def __init__(self) -> None:
         self.os_version = self._detect_os_version()
         self.ssn_cache = {}
         self.ntdll_handle = None
+        self.kernel32 = None
+        self.ntdll = None
         
         if IS_WINDOWS and ctypes:
             try:
@@ -286,9 +304,6 @@ class HadesSyscallEngine:
                 logger.warning(f"Failed to initialize HadesSyscallEngine: {e}")
                 self.kernel32 = None
                 self.ntdll = None
-        else:
-            self.kernel32 = None
-            self.ntdll = None
     
     def _detect_os_version(self) -> str:
         """Detect Windows OS version or return system info"""
@@ -315,7 +330,7 @@ class HadesSyscallEngine:
             logger.warning(f"OS detection failed: {e}")
             return f'{platform.system()}_Unknown'
     
-    def _load_ntdll_from_disk(self):
+    def _load_ntdll_from_disk(self) -> None:
         """Load ntdll.dll from disk (Windows only)"""
         if not IS_WINDOWS or not self.kernel32:
             self.ntdll_handle = None
@@ -344,7 +359,14 @@ class HadesSyscallEngine:
             self.ntdll_handle = None
     
     def get_syscall_number(self, func_name: str) -> int:
-        """Get syscall number for a given function (Windows only)"""
+        """Get syscall number for a given function (Windows only)
+        
+        Args:
+            func_name: Function name (e.g., 'NtCreateFile')
+            
+        Returns:
+            Syscall number or 0 if not found
+        """
         if not IS_WINDOWS or not self.ntdll_handle:
             logger.debug(f"Syscall extraction not available on {platform.system()}")
             return 0
@@ -379,11 +401,11 @@ class HadesSyscallEngine:
 class SecurityEvasion:
     """Demonstration of evasion techniques for educational purposes."""
     
-    def __init__(self):
+    def __init__(self) -> None:
         self.anti_debug = AntiDebug()
         self.sandbox_detector = SandboxDetector()
     
-    def execute_evasion(self):
+    def execute_evasion(self) -> None:
         """Execute evasion demonstrations"""
         logger.info("Demonstrating evasion techniques for research...")
         if self.anti_debug.is_debugged():
@@ -397,7 +419,7 @@ class SecurityEvasion:
 class AntiDebug:
     """Anti-debugging demonstration (Windows-specific)."""
     
-    def __init__(self):
+    def __init__(self) -> None:
         self.kernel32 = None
         if IS_WINDOWS and ctypes:
             try:
@@ -461,20 +483,20 @@ class SandboxDetector:
                 uptime = time.time() - boot_time
                 result = uptime > 300  # 5 minutes
                 logger.info(f"Runtime check: {uptime:.0f}s - {'PASS' if result else 'FAIL'}")
+                return result
             elif IS_LINUX:
                 try:
                     with open('/proc/uptime', 'r') as f:
                         uptime_seconds = float(f.readline().split()[0])
                     result = uptime_seconds > 300
                     logger.info(f"Runtime check: {uptime_seconds:.0f}s - {'PASS' if result else 'FAIL'}")
+                    return result
                 except IOError:
                     logger.warning("Could not read /proc/uptime")
                     return True
             else:
                 logger.info("Runtime check: Not implemented for this platform")
                 return True
-            
-            return result
         except Exception as e:
             logger.warning(f"Runtime check error: {e}")
             return True
@@ -484,20 +506,27 @@ class SandboxDetector:
 # =============================================================================
 
 class PhoenixFramework:
-    """Phoenix-Evasion-Research Framework for educational use."""
+    """Phoenix-Evasion-Research Framework for educational use.
     
-    def __init__(self):
+    Attributes:
+        syscall_engine: HadesSyscallEngine for Windows syscall research
+        security: SecurityEvasion for evasion demonstrations
+        obfuscator: PhoenixObfuscator for string protection
+        system_info: Current system information
+    """
+    
+    def __init__(self) -> None:
         logger.info(f"Initializing Phoenix Framework on {platform.system()}")
         self.syscall_engine = HadesSyscallEngine()
         self.security = SecurityEvasion()
         self.obfuscator = PhoenixObfuscator()
         self.system_info = get_system_info()
     
-    def execute_evasion(self):
+    def execute_evasion(self) -> None:
         """Execute evasion demonstrations"""
         self.security.execute_evasion()
     
-    def demonstrate_obfuscation(self):
+    def demonstrate_obfuscation(self) -> None:
         """Demonstrate string obfuscation capabilities"""
         logger.info("Demonstrating advanced obfuscation...")
         test_strings = [
@@ -510,13 +539,13 @@ class PhoenixFramework:
             try:
                 encrypted = self.obfuscator.obfuscate_string(test_str)
                 decrypted = self.obfuscator.deobfuscate_string(encrypted)
+                status = 'OK' if test_str == decrypted else 'MISMATCH'
                 logger.info(f"Obfuscation test: {test_str[:30]}... "
-                           f"({len(encrypted)} bytes) - "
-                           f"{'OK' if test_str == decrypted else 'MISMATCH'}")
+                           f"({len(encrypted)} bytes) - {status}")
             except Exception as e:
                 logger.error(f"Obfuscation test failed: {e}")
     
-    def demonstrate_syscall_research(self):
+    def demonstrate_syscall_research(self) -> None:
         """Demonstrate syscall research capabilities"""
         logger.info("Demonstrating syscall research...")
         if IS_WINDOWS:
@@ -533,8 +562,12 @@ class PhoenixFramework:
         else:
             logger.info(f"Syscall research is Windows-specific, current platform: {platform.system()}")
     
-    def run_research_assessment(self, target_url: str):
-        """Run complete research assessment"""
+    def run_research_assessment(self, target_url: str) -> None:
+        """Run complete research assessment
+        
+        Args:
+            target_url: Target URL for research assessment
+        """
         logger.info("="*60)
         logger.info("PHOENIX-EVASION-RESEARCH 2025 - DEMO")
         logger.info(f"Platform: {self.system_info['os']} {self.system_info['release']}")
@@ -554,8 +587,12 @@ class PhoenixFramework:
             logger.error(f"Assessment failed: {e}", exc_info=True)
             raise
     
-    def _generate_research_report(self, target_url: str):
-        """Generate research report in markdown"""
+    def _generate_research_report(self, target_url: str) -> None:
+        """Generate research report in markdown
+        
+        Args:
+            target_url: Target URL assessed
+        """
         report = f"""# PHOENIX-EVASION-RESEARCH REPORT
 Generated: {datetime.now().isoformat()}
 Framework Version: {__version__}
@@ -587,6 +624,7 @@ for defensive security purposes. The framework successfully demonstrates:
 - Implement behavioral analysis for sandbox detection bypass
 - Study syscall patterns for EDR evasion detection
 - Enhance debugger detection capabilities
+- Monitor process creation and memory allocation patterns
 
 ## System Information
 - CPU Cores: {psutil.cpu_count()}
@@ -611,7 +649,7 @@ Unauthorized access to computer systems is illegal.
 # COMMAND LINE INTERFACE
 # =============================================================================
 
-def main():
+def main() -> None:
     """Main entry point"""
     print(DISCLAIMER)
     
@@ -620,8 +658,8 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python phoenix_evasion_research.py --target https://example.com
-  python phoenix_evasion_research.py --target https://test.org --quick
+  python -m phoenix_evasion_research --target https://example.com
+  python -m phoenix_evasion_research --target https://test.org --quick
         
 Disclaimer: For educational and research purposes only.
         """
