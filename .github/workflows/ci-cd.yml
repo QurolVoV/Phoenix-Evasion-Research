@@ -1,0 +1,134 @@
+# .github/workflows/ci-cd.yml
+# Phoenix-Evasion-Research Framework — Full CI/CD 2025
+# Author: QurolVoV (100% solo developer)
+
+name: CI/CD
+
+on:
+  push:
+    branches: [ main, develop ]
+    tags: [ "v*.*.*" ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  PYTHON_VERSION: "3.11"
+
+jobs:
+  quality-and-tests:
+    name: Code Quality & Tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python ${{ env.PYTHON_VERSION }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e .[dev,docs]
+
+      - name: Lint with Ruff
+        run: |
+          ruff check .
+
+      - name: Format check with Black
+        run: |
+          black --check --diff .
+
+      - name: Type checking with mypy
+        run: |
+          mypy .
+
+      - name: Run tests with pytest
+        run: |
+          pytest tests/ \
+            --cov=phoenix_evasion_research \
+            --cov-report=xml \
+            --cov-report=term-missing \
+            -n auto
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: false
+
+      - name: Security scan with Bandit
+        run: |
+          bandit -r . -c pyproject.toml
+
+      - name: Security scan with Semgrep
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: p/security-audit p/python
+
+  release:
+    name: Build & Release
+    needs: quality-and-tests
+    if: startsWith(github.ref, 'refs/tags/v')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install build tools
+        run: |
+          pip install build twine
+
+      - name: Build package
+        run: |
+          python -m build
+
+      - name: Check package
+        run: |
+          twine check dist/*
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          draft: false
+          prerelease: false
+          generateReleaseNotes: true
+          artifacts: "dist/*"
+
+      - name: Upload to PyPI (only official tags)
+        if: startsWith(github.ref, 'refs/tags/v') && !contains(github.ref, '-rc')
+        env:
+          TWINE_USERNAME: __token__
+          TWINE_PASSWORD: ${{ secrets.PYPI_API_TOKEN }}
+        run: |
+          twine upload dist/*
+
+  notify:
+    name: Notification
+    needs: [quality-and-tests, release]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Summary
+        run: |
+          echo "CI/CD selesai oleh QurolVoV (solo developer)"
+          echo "Project: Phoenix-Evasion-Research Framework"
+          echo "100% buatan sendiri — tanpa bantuan orang lain"
