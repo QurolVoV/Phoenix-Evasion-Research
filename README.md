@@ -12,9 +12,7 @@ Riset teknik evasion modern untuk memperkuat pertahanan siber Indonesia.
 [![Stars](https://img.shields.io/github/stars/QurolVoV/phoenix-evasion-research?style=social)](https://github.com/QurolVoV/phoenix-evasion-research/stargazers)
 [![Linux CI](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml/badge.svg?branch=main&event=push)](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml)
 [![Windows CI](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml/badge.svg?event=workflow_dispatch&label=Windows%20Tests)](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml)
-[![Docker Build](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/docker.yml/badge.svg)](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/docker.yml)
-[![Docker Image Size](https://ghcr.io/v2/qurolvov/phoenix-evasion-research/manifests/latest/badge.svg)](https://ghcr.io/qurolvov/phoenix-evasion-research)
-[![Kubernetes Deploy](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/kubernetes-deploy.yml/badge.svg)](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/kubernetes-deploy.yml)
+
 > **100% edukasi • 0% offensive • Untuk Blue Team & Researcher Indonesia**
 
 ---
