@@ -1,84 +1,50 @@
-# .github/workflows/kubernetes-deploy.yml
-# Kubernetes GitOps Deployment Pipeline (Fixed for Kind + Kustomize)
-# Author: QurolVoV
+# .github/workflows/kubernetes-deploy.yml (Fixed Kustomize & Kind)
+# Author: QurolVoV 
 
-name: Kubernetes Deploy
+name: Kubernetes Deploy (Fixed)
 
 on:
   push:
     tags: [ "v*.*.*" ]
-  workflow_dispatch:  # Manual trigger untuk test
-
-permissions:
-  contents: read
-  packages: read
+  workflow_dispatch:
 
 jobs:
-  deploy-to-k8s:
-    name: Deploy to Kubernetes (Kind Test Cluster)
+  k8s-deploy-test:
+    name: Deploy to Kind (Ephemeral CI Test)
     runs-on: ubuntu-latest
-    if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Extract tag name
+      - name: Extract tag
         id: tag
         run: echo "tag=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
 
-      - name: Install kubectl & kustomize
-        uses: azure/setup-kubectl@v4
-        with:
-          version: 'v1.29.0'  # Stable 2025
-
-      - name: Install kustomize (fixed version)
-        run: |
-          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
-          sudo mv kustomize /usr/local/bin/
-
-      - name: Setup Kind cluster (ephemeral for CI test)
-        uses: helm/kind-action@v1.10.0  # Auto create Kind cluster
+      - name: Setup Kind Cluster
+        uses: helm/kind-action@v1.10.0
         with:
           cluster_name: phoenix-lab
           version: v0.24.0
-          wait: 120s  # Wait 2 min for stability
+          wait: 120s
 
-      - name: Configure kubeconfig from secret (fixed decode)
-        env:
-          KUBE_CONFIG_DATA: ${{ secrets.KUBE_CONFIG_DATA }}
+      - name: Install yq (untuk manual patch, fix kustomize edit issues)
         run: |
-          # Decode base64 & fix newlines
-          echo $KUBE_CONFIG_DATA | base64 -d > /tmp/kubeconfig
-          sed -i 's/\\n/\n/g' /tmp/kubeconfig  # Fix escaped newlines
-          export KUBECONFIG=/tmp/kubeconfig
-          echo "KUBECONFIG=/tmp/kubeconfig" >> $GITHUB_ENV
-          kubectl cluster-info  # Test connection
+          sudo snap install yq  # Stable 2025
 
-      - name: Update & Deploy with Kustomize (fixed image tag)
+      - name: Patch kustomization.yaml manually (no edit command)
         run: |
           cd k8s
-          # Backup original kustomization.yaml
-          cp kustomization.yaml kustomization.yaml.bak
-          
-          # Try edit image tag (with error handling)
-          kustomize edit set image ghcr.io/qurolvov/phoenix-evasion-research=ghcr.io/qurolvov/phoenix-evasion-research:${{ steps.tag.outputs.tag }} || {
-            echo "Edit failed, using build instead"
-            # Fallback: manual patch
-            sed -i "s/newTag: latest/newTag: ${{ steps.tag.outputs.tag }}/" kustomization.yaml
-          }
-          
-          # Build & apply
-          kustomize build . | kubectl apply -f -
-          kubectl rollout status deployment/phoenix-research --timeout=300s || echo "Rollout warning: may be normal in CI"
+          yq e '.images[0].newTag = "${{ steps.tag.outputs.tag }}"' -i kustomization.yaml
 
-      - name: Verify deployment
+      - name: Deploy with kubectl (simple, no kustomize edit)
         run: |
+          cd k8s
+          kubectl apply -k .  # Direct kustomize build via kubectl
+          kubectl rollout status deployment/phoenix-research --timeout=180s
           kubectl get pods -l app=phoenix-research
-          kubectl get svc phoenix-research-svc
-          echo "Deployment successful! Check logs for details."
 
-      - name: Cleanup (optional)
-        if: always()
+      - name: Verify
         run: |
-          kind delete cluster --name phoenix-lab || true
+          kubectl get svc phoenix-research-svc
+          echo "Deploy OK! Pod running in Kind cluster."
