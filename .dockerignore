@@ -1,16 +1,13 @@
 # .dockerignore — Phoenix-Evasion-Research (QurolVoV)
-# Tujuan: mempercepat Docker build & menghindari error context
-
-# .dockerignore
-# Optimize Docker build context
+# Optimized for multi-stage Docker build
 
 # Git
-.git
+.git/
 .gitignore
 .gitattributes
 
-# Python
-__pycache__
+# Python cache files
+__pycache__/
 *.py[cod]
 *$py.class
 *.so
@@ -18,14 +15,12 @@ __pycache__
 env/
 venv/
 ENV/
-build/
+
+# Build and distribution (keep source files)
 develop-eggs/
-dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
 parts/
 sdist/
 var/
@@ -33,6 +28,8 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Testing and coverage (KEEP tests/ directory for builder stage)
 .pytest_cache/
 .coverage
 .coverage.*
@@ -50,45 +47,33 @@ htmlcov/
 *.sublime-project
 *.sublime-workspace
 
-# CI/CD
+# CI/CD (exclude workflows but keep config files)
 .github/workflows/
-.travis.yml
-.gitlab-ci.yml
 
-# Documentation
-docs/
-*.md
-*.rst
+# Documentation (KEEP these files for build)
+# docs/  # Keep if needed for build
 
-# Testing
-tests/
-conftest.py
-
-# Project specific
-phoenix_research_report.md
-phoenix_research_report.json
+# Logs and temporary files
 *.log
 *.bak
 *.tmp
 
-# Environment
+# Environment files (sensitive data)
 .env
 .env.local
 .env.*.local
-config.ini
 
 # OS
 Thumbs.db
 .AppleDouble
 .LSOverride
 
-# Docker
-Dockerfile
-.dockerignore
-docker-compose.yml
-docker-compose.*.yml
+# Docker (keep these for build context)
+# Dockerfile - KEEP for build
+# .dockerignore - KEEP for build
+# docker-compose.yml - KEEP if needed
 
-# Development
+# Development configs (KEEP these for build)
 .pre-commit-config.yaml
 pyproject.toml
 setup.cfg
