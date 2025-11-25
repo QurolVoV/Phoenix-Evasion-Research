@@ -74,6 +74,6 @@ Thumbs.db
 # docker-compose.yml - KEEP if needed
 
 # Development configs (KEEP these for build)
-.pre-commit-config.yaml
-pyproject.toml
-setup.cfg
+# .pre-commit-config.yaml
+# pyproject.toml
+# setup.cfg
