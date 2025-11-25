@@ -64,7 +64,7 @@ python -m venv venv
 source venv/bin/activate        # Linux/macOS
 # .\venv\Scripts\activate       # Windows
 pip install -r requirements.txt
-
+```
 
 #💖 Support Our Research
 
@@ -85,7 +85,7 @@ Your support enables us to:
     Conduct advanced threat intelligence research
 
 #🎯 Quick Start
-bash
+```bash
 
 # Clone the repository
 git clone https://github.com/QurolVoV/phoenix-framework.git
@@ -96,7 +96,7 @@ pip install -r requirements.txt
 
 # Run your first assessment
 python Woodlabs_Phoenix_Framework_beta.py --target https://example.com
-
+```
 📖 Table of Contents
 
     Overview
@@ -221,7 +221,7 @@ Storage	100MB	1GB
 OS	Windows 10, Linux, macOS	Windows 11, Ubuntu 20.04+
 Step-by-Step Installation
 1. Environment Setup
-bash
+```bash
 
 # Clone repository
 git clone https://github.com/QurolVoV/phoenix-framework.git
@@ -229,7 +229,7 @@ cd phoenix-framework
 
 # Create virtual environment (Recommended)
 python -m venv phoenix_env
-
+```
 # Activate environment
 # Windows:
 phoenix_env\Scripts\activate
@@ -237,7 +237,7 @@ phoenix_env\Scripts\activate
 source phoenix_env/bin/activate
 
 2. Dependency Installation
-bash
+```bash
 
 # Install from requirements
 pip install -r requirements.txt
@@ -245,28 +245,28 @@ pip install -r requirements.txt
 # Or install individually
 pip install cryptography>=3.4.8 psutil>=5.9.0 dnspython>=2.2.1
 pip install grpcio>=1.46.3 zstandard>=0.18.0 requests>=2.28.1
-
+```
 3. Verification
-bash
+```bash
 
 # Test installation
 python -c "from Woodlabs_Phoenix_Framework_beta import PhoenixFramework; print('Installation successful!')"
 
 # Check CLI
 python Woodlabs_Phoenix_Framework_beta.py --help
-
+```
 Platform-Specific Notes
 Windows
-bash
+```bash
 
 # Enable execution policy if needed
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # Install Visual C++ Build Tools for cryptography
 # Download from: https://visualstudio.microsoft.com/visual-cpp-build-tools/
-
+```
 Linux
-bash
+```bash
 
 # Install system dependencies (Ubuntu/Debian)
 sudo apt update
@@ -275,19 +275,19 @@ sudo apt install python3-pip python3-venv build-essential libssl-dev
 # For RedHat/CentOS
 sudo yum groupinstall "Development Tools"
 sudo yum install openssl-devel
-
+```
 macOS
-bash
+```bash
 
 # Install Homebrew if not available
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Install dependencies
 brew install openssl python@3.10
-
+```
 🔧 Quick Examples
 Basic Framework Usage
-python
+```python
 
 from Woodlabs_Phoenix_Framework_beta import PhoenixFramework
 
@@ -296,9 +296,9 @@ framework = PhoenixFramework()
 
 # Run comprehensive research assessment
 framework.run_research_assessment("https://target-domain.com")
-
+```
 Obfuscation Research
-python
+```python
 
 from Woodlabs_Phoenix_Framework_beta import PhoenixObfuscator
 
@@ -324,9 +324,9 @@ for data in research_data:
     print("-" * 50)
     
     protected_results.append(encrypted)
-
+```
 Syscall Analysis Research
-python
+```python
 
 from Woodlabs_Phoenix_Framework_beta import HadesSyscallEngine
 
@@ -349,9 +349,9 @@ for syscall in syscalls_to_study:
     ssn = syscall_engine.get_syscall_number(syscall)
     status = "✓ Found" if ssn else "✗ Not found"
     print(f"{syscall:<25} {status:>12} SSN: {ssn}")
-
+```
 Security Evasion Research
-python
+```python
 
 from Woodlabs_Phoenix_Framework_beta import SecurityEvasion
 
@@ -372,13 +372,13 @@ if security_research.sandbox_detector.detect_sandbox():
     print("Sandbox environment detected")
 else: 
     print("Genuine hardware environment confirmed")
-
+```
 🏗️ Architecture Overview
 System Architecture Diagram
 
 Phoenix Framework Architecture
 ====================================================================
-
+```
 Application Layer
 ├── CLI Interface (argparse)
 ├── Research Orchestrator  
@@ -399,8 +399,12 @@ Supporting Layer
 ├── Utilities (Hashing, Encoding, etc.)
 ├── Thread Management
 └── Memory Management
-
+```
 Data Flow
+```
+graph TD
+<img width="2294" height="2914" alt="dataflow" src="https://github.com/user-attachments/assets/61e3f2e4-b80a-4bee-a9f7-49836b32a0ab" />
+```
 Component Interaction
 
 # Example component interaction
@@ -538,7 +542,7 @@ SandboxDetector Class
     Behavioral Indicators: Execution pattern analysis
 
 Research Implementation:
-
+```
 security = SecurityEvasion()
 
 # Comprehensive evasion research
@@ -552,10 +556,10 @@ research_results = {
 print("Evasion Research Results:")
 for check, result in research_results.items():
     print(f"  {check}: {result}")
-
+```
 🚀 Advanced Usage
 Custom Research Modules
-
+```
 from Woodlabs_Phoenix_Framework_beta import PhoenixObfuscator, HadesSyscallEngine
 import json
 
@@ -585,8 +589,8 @@ class AdvancedResearch:
             encrypted_data[key] = self.obfuscator.obfuscate_string(json_data)
         
         return encrypted_data
-
-# Usage
+```
+```# Usage
 researcher = AdvancedResearch()
 researcher.conduct_syscall_research()
 protected_findings = researcher.protect_research_findings()
@@ -620,12 +624,12 @@ class ParallelResearch:
                 results.extend(future.result())
         
         return results
-
-# Usage
+```
+```# Usage
 research_data = [f"research_item_{i}" for i in range(1000)]
 parallel_research = ParallelResearch()
 results = parallel_research.conduct_parallel_research(research_data)
-
+```
 📚 API Reference
 PhoenixFramework Class
 
@@ -733,7 +737,7 @@ PHOENIX-EVASION-RESEARCH 2025 - DEMO
 ASSESSMENT DEMO COMPLETED
 
 🧪 Testing & Validation
-Test Environment Setup
+```Test Environment Setup
 
 # Create dedicated test environment
 mkdir phoenix_testing
@@ -753,8 +757,8 @@ Comprehensive Test Suite
 import unittest
 import sys
 import os
-
-# Add framework to path
+```
+```# Add framework to path
 sys.path.insert(0, os.path.abspath('..'))
 
 from Woodlabs_Phoenix_Framework_beta import (
@@ -797,7 +801,7 @@ class TestPhoenixFramework(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
+```
 Running Tests
 
 # Run all tests
@@ -811,7 +815,7 @@ python -m pytest tests/ --cov=Woodlabs_Phoenix_Framework_beta --cov-report=html
 
 Performance Benchmarking
 
-# benchmarks/performance_test.py
+```# benchmarks/performance_test.py
 import time
 from Woodlabs_Phoenix_Framework_beta import PhoenixObfuscator
 
@@ -835,23 +839,23 @@ def benchmark_obfuscation():
 
 if __name__ == "__main__":
     benchmark_obfuscation()
-
+```
 🤝 Contributing
-
+```
 We welcome contributions from the security research community! Here's how you can help:
 Contribution Workflow
-
+```
 Fork the Repository
-
+```
 git clone https://github.com/QurolVoV/phoenix-framework.git
 cd phoenix-framework
-
+```
 Create Feature Branch
-
+```
 git checkout -b feature/advanced-evasion-techniques
-
+```
 Development Guidelines
-
+```
 # Follow code style standards
 def new_research_feature(self, parameter: str) -> Dict:
     """
@@ -868,9 +872,9 @@ def new_research_feature(self, parameter: str) -> Dict:
     """
     # Implementation with type hints
     pass
-
+```
 Testing Requirements
-bash
+```bash
 
 # Run all tests before submitting
 python -m pytest tests/ -v
@@ -887,7 +891,7 @@ python -m pytest tests/ --cov=Woodlabs_Phoenix_Framework_beta --cov-report=term-
         Include test results
 
         Update documentation
-
+```
 Research Areas Needing Contributions
 
     Advanced Evasion Techniques: New anti-analysis methods
@@ -1184,7 +1188,7 @@ Alternative Support Methods
 
 <div align="center">
 
-🔥 Phoenix-Evasion-Research Framework 2025
+🔥 Phoenix-Evasion-Research Framework
 
 Advanced Security Research for Defensive Excellence
 
