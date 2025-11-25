@@ -1,43 +1,94 @@
 # .dockerignore — Phoenix-Evasion-Research (QurolVoV)
 # Tujuan: mempercepat Docker build & menghindari error context
 
-# Git & GitHub
+# .dockerignore
+# Optimize Docker build context
+
+# Git
 .git
 .gitignore
-.github/
+.gitattributes
 
-# Python cache
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.env
-.venv
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
 venv/
-
-# Tests & docs (tidak perlu di image)
-tests/
-docs/
-k8s/
-
-# CI/CD artifacts
-.docker/
+ENV/
 build/
+develop-eggs/
 dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
 *.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.mypy_cache/
+.ruff_cache/
 
-# IDE & OS files
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
+*~
 .DS_Store
-Thumbs.db
+*.sublime-project
+*.sublime-workspace
 
-# File sementara & logs
+# CI/CD
+.github/workflows/
+.travis.yml
+.gitlab-ci.yml
+
+# Documentation
+docs/
+*.md
+*.rst
+
+# Testing
+tests/
+conftest.py
+
+# Project specific
+phoenix_research_report.md
+phoenix_research_report.json
 *.log
+*.bak
 *.tmp
-*.temp
 
-# File konfigurasi development
+# Environment
+.env
+.env.local
+.env.*.local
+config.ini
+
+# OS
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+docker-compose.*.yml
+
+# Development
 .pre-commit-config.yaml
-pyproject.toml  # Hapus ini jika ingin install editable
-requirements-dev.txt
+pyproject.toml
+setup.cfg
