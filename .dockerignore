@@ -18,11 +18,7 @@ venv/
 # Tests & docs (tidak perlu di image)
 tests/
 docs/
-k8s/                 
-*.md
-*.txt
-*.yaml
-*.yml
+k8s/
 
 # CI/CD artifacts
 .docker/
@@ -35,3 +31,13 @@ dist/
 .idea/
 .DS_Store
 Thumbs.db
+
+# File sementara & logs
+*.log
+*.tmp
+*.temp
+
+# File konfigurasi development
+.pre-commit-config.yaml
+pyproject.toml  # Hapus ini jika ingin install editable
+requirements-dev.txt
