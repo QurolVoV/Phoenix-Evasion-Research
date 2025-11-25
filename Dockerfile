@@ -31,6 +31,12 @@ RUN pip install --no-cache-dir --upgrade pip && \
 COPY src/ ./src/
 COPY pyproject.toml README.md LICENSE ./
 
+# Copy hanya file yang benar-benar ada
+COPY pyproject.toml ./
+COPY LICENSE ./
+
+# Conditional copy untuk README.md
+COPY README.md ./ 2>/dev/null || echo "README.md not found, continuing..."
 # Install package in editable mode (jika pakai pyproject.toml)
 RUN pip install -e .
 
