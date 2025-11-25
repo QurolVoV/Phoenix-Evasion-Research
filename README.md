@@ -65,7 +65,8 @@ source venv/bin/activate        # Linux/macOS
 # .\venv\Scripts\activate       # Windows
 pip install -r requirements.txt
 
-💖 Support Our Research
+
+#💖 Support Our Research
 
 If you find this project valuable and want to support our ongoing security research, consider making a donation. Your support helps us maintain and improve this framework for the cybersecurity community.
 
@@ -83,7 +84,7 @@ Your support enables us to:
 
     Conduct advanced threat intelligence research
 
-🎯 Quick Start
+#🎯 Quick Start
 bash
 
 # Clone the repository
@@ -1198,3 +1199,18 @@ Woodlabs Security Research • 2025
 </div>
 
 This documentation is continuously updated. Check our GitHub repository for the latest version.
+
+## Support This Project
+
+Proyek ini 100% gratis dan open-source berkat dukungan komunitas.
+
+Kamu bisa mendukung riset kami melalui:
+
+[![Saweria](https://saweria.co/qr/3583835)](https://saweria.co/WoodLabs)
+
+Setiap donasi akan digunakan untuk:
+- Riset teknik evasion terbaru
+- Workshop gratis keamanan siber
+- Pengembangan tool defensive open-source
+
+Terima kasih untuk semua yang sudah mendukung WoodLabs!
