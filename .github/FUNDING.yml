@@ -1,0 +1,19 @@
+# .github/FUNDING.yml
+# GitHub Sponsors + Custom Donation Links
+
+github: []  # 
+
+custom:
+  - name: "Saweria.co/WoodLabs (Prioritas Utama)"
+    url: "https://saweria.co/WoodLabs"
+    description: "Dukung riset keamanan siber Indonesia"
+    icon: "heart"
+
+  - name: "Ko-fi (Alternatif)"
+    url: "https://trakteer.id/veiluponveil/tip"
+    description: "One-time donation"
+    icon: "Kopi"
+
+  - name: "Trakteer.id (Opsional)"
+    url: "https://trakteer.id/veiluponveil/gift"
+    icon: "gift"
