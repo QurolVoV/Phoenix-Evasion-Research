@@ -1,0 +1,37 @@
+# .dockerignore — Phoenix-Evasion-Research (QurolVoV)
+# Tujuan: mempercepat Docker build & menghindari error context
+
+# Git & GitHub
+.git
+.gitignore
+.github/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv
+venv/
+
+# Tests & docs (tidak perlu di image)
+tests/
+docs/
+k8s/                 
+*.md
+*.txt
+*.yaml
+*.yml
+
+# CI/CD artifacts
+.docker/
+build/
+dist/
+*.egg-info/
+
+# IDE & OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
