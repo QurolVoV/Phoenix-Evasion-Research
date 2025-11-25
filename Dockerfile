@@ -63,16 +63,13 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY --from=builder /usr/local/lib/python3.11/site-packages /usr/local/lib/python3.11/site-packages
 COPY --from=builder /usr/local/bin /usr/local/bin
 
-# Copy application code and required files (only if they exist)
+# Copy application code and required files
 COPY --from=builder /build/src /app/src
 
-# Copy documentation files only if they exist
-COPY --from=builder /build/README.md /app/README.md 2>/dev/null || echo "README.md not found, skipping"
-COPY --from=builder /build/SECURITY.md /app/SECURITY.md 2>/dev/null || echo "SECURITY.md not found, skipping"
-COPY --from=builder /build/LICENSE /app/LICENSE 2>/dev/null || echo "LICENSE not found, skipping"
-
-# Create placeholder files if they don't exist
-RUN touch /app/README.md /app/SECURITY.md /app/LICENSE
+# Copy documentation files with conditional logic using RUN
+RUN if [ -f /build/README.md ]; then cp /build/README.md /app/README.md; else touch /app/README.md; fi
+RUN if [ -f /build/SECURITY.md ]; then cp /build/SECURITY.md /app/SECURITY.md; else touch /app/SECURITY.md; fi
+RUN if [ -f /build/LICENSE ]; then cp /build/LICENSE /app/LICENSE; else touch /app/LICENSE; fi
 
 # Create non-root user
 RUN useradd -m -u 1000 phoenix && \
