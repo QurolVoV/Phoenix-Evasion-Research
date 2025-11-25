@@ -30,17 +30,12 @@ import ctypes
 import platform
 import urllib3
 import ssl
-import dns.resolver
-import dns.message
-import dns.query
 import traceback
 import secrets
 import tempfile
 import asyncio
-import grpc
 import psutil
 import getpass
-import winreg
 import math
 import datetime
 import glob
@@ -60,6 +55,20 @@ from cryptography.hazmat.primitives import serialization
 from concurrent import futures
 import zlib
 import zstandard as zstd
+
+# Platform-specific imports
+if platform.system().lower() == 'windows':
+    import winreg
+    import grpc
+    try:
+        import dns.resolver
+        import dns.message
+        import dns.query
+    except ImportError:
+        pass
+else:
+    winreg = None
+    grpc = None
 
 # =============================================================================
 # DISCLAIMER: EDUCATIONAL USE ONLY
@@ -131,7 +140,7 @@ class PhoenixObfuscator:
         with self.cache_lock:
             self.nonce_tracker[nonce] = time.time()
         salt = secrets.token_bytes(16)
-        key = hashlib.pbkdf2_hmac('sha512', self.master_key + nonce, salt, 500000, dklen=32)  # Fallback for demo
+        key = hashlib.pbkdf2_hmac('sha512', self.master_key + nonce, salt, 500000, dklen=32)
         chacha = ChaCha20Poly1305(key)
         inner_nonce = secrets.token_bytes(12)
         ciphertext = chacha.encrypt(inner_nonce, data, None)
@@ -157,15 +166,29 @@ class HadesSyscallEngine:
     def __init__(self):
         self.os_version = self._detect_os_version()
         self.ssn_cache = {}
-        self.kernel32 = ctypes.WinDLL('kernel32', use_last_error=True) if platform.system().lower() == 'windows' else None
-        self.ntdll = ctypes.WinDLL('ntdll', use_last_error=True) if platform.system().lower() == 'windows' else None
-        if platform.system().lower() == 'windows':
-            self._load_ntdll_from_disk()
+        self.is_windows = platform.system().lower() == 'windows'
+        
+        if self.is_windows:
+            try:
+                self.kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
+                self.ntdll = ctypes.WinDLL('ntdll', use_last_error=True)
+                self._load_ntdll_from_disk()
+            except Exception as e:
+                print(f"[!] Failed to load Windows libraries: {e}")
+                self.kernel32 = None
+                self.ntdll = None
+        else:
+            self.kernel32 = None
+            self.ntdll = None
     
     def _detect_os_version(self) -> str:
         try:
-            if platform.system().lower() != 'windows':
-                return 'Unknown'
+            if not self.is_windows:
+                return 'NonWindows'
+            
+            if winreg is None:
+                return 'WindowsUnknown'
+            
             reg = winreg.ConnectRegistry(None, winreg.HKEY_LOCAL_MACHINE)
             key = winreg.OpenKey(reg, r'SOFTWARE\Microsoft\Windows NT\CurrentVersion')
             build = winreg.QueryValueEx(key, 'CurrentBuild')[0]
@@ -181,6 +204,9 @@ class HadesSyscallEngine:
     
     def _load_ntdll_from_disk(self):
         try:
+            if not self.kernel32:
+                return
+            
             system32 = os.path.join(os.environ.get('WINDIR', 'C:\\Windows'), 'System32')
             ntdll_path = os.path.join(system32, 'ntdll.dll')
             file_hash = hashlib.sha256()
@@ -195,12 +221,12 @@ class HadesSyscallEngine:
     def get_syscall_number(self, func_name: str) -> int:
         if func_name in self.ssn_cache:
             return self.ssn_cache[func_name]
-        if not self.ntdll_handle:
+        if not self.ntdll_handle or not self.kernel32:
             return 0
         try:
             addr = self.kernel32.GetProcAddress(self.ntdll_handle, func_name.encode())
             code = ctypes.string_at(addr, 64)
-            patterns = { 'Windows11': [(b"\x4C\x8B\xD1\xB8", 4)] }  # Simplified for demo
+            patterns = { 'Windows11': [(b"\x4C\x8B\xD1\xB8", 4)] }
             pattern_list = patterns.get(self.os_version, [])
             for prologue, offset in pattern_list:
                 if code.startswith(prologue):
@@ -236,13 +262,20 @@ class AntiDebug:
     """Anti-debugging demonstration."""
     
     def __init__(self):
-        if platform.system().lower() == 'windows':
-            self.kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
+        self.is_windows = platform.system().lower() == 'windows'
+        if self.is_windows:
+            try:
+                self.kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
+            except:
+                self.kernel32 = None
     
     def is_debugged(self) -> bool:
-        if platform.system().lower() != 'windows':
+        if not self.is_windows or not self.kernel32:
             return False
-        return bool(self.kernel32.IsDebuggerPresent())  # Simplified for demo
+        try:
+            return bool(self.kernel32.IsDebuggerPresent())
+        except:
+            return False
 
 class SandboxDetector:
     """Sandbox detection demo."""
@@ -250,7 +283,7 @@ class SandboxDetector:
     def detect_sandbox(self) -> bool:
         checks = [self._check_cpu_cores, self._check_ram_size]
         failed_checks = sum(1 for check in checks if not check())
-        return failed_checks >= 1  # Simplified
+        return failed_checks >= 1
     
     def _check_cpu_cores(self) -> bool:
         return psutil.cpu_count() >= 2
@@ -281,8 +314,7 @@ class PhoenixFramework:
         print("\nASSESSMENT DEMO COMPLETED")
     
     def _generate_research_report(self):
-        report = """
-# PHOENIX-EVASION-RESEARCH REPORT
+        report = f"""# PHOENIX-EVASION-RESEARCH REPORT
 Generated: {datetime.now().isoformat()}
 
 ## Summary
