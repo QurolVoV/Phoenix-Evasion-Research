@@ -8,8 +8,8 @@ Riset teknik evasion modern untuk memperkuat pertahanan siber Indonesia.
 [![Donasi Saweria](https://img.shields.io/badge/☕_Dukung_WoodLabs-Saweria.co/WoodLabs-ff6b35?style=for-the-badge&logo=coffee&logoColor=white)](https://saweria.co/WoodLabs)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-green.svg)](https://python.org)
-[![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Linux_%7C_macOS-lightgrey.svg)](https://github.com/woodlabs-security/phoenix-evasion-research)
-[![Stars](https://img.shields.io/github/stars/woodlabs-security/phoenix-evasion-research?style=social)](https://github.com/woodlabs-security/phoenix-evasion-research/stargazers)
+[![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Linux_%7C_macOS-lightgrey.svg)](https://github.com/QurolVoV/phoenix-evasion-research)
+[![Stars](https://img.shields.io/github/stars/QurolVoV/phoenix-evasion-research?style=social)](https://github.com/QurolVoV/phoenix-evasion-research/stargazers)
 
 > **100% edukasi • 0% offensive • Untuk Blue Team & Researcher Indonesia**
 
