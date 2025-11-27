@@ -917,27 +917,39 @@ python phoenix_framework.py \
 ## Changelog
 
 ### Version 2.0 NV1-7 (Current)
-- **Added**: Process Ghosting injection technique
-- **Added**: ICMP C2 tunneling channel
-- **Added**: Argon2 string obfuscation
-- **Added**: Selective D1rkSleep encryption
-- **Added**: Polymorphic syscall stubs
-- **Improved**: Multi-channel C2 failover logic
-- **Improved**: Sandbox detection accuracy (6-point methodology)
-- **Improved**: Anti-debugging capabilities (5-layer detection)
-- **Fixed**: Windows 11 build 22000+ SSN compatibility
-- **Fixed**: Memory leak in nonce tracker cleanup
-- **Enhanced**: Comprehensive report generation
+ Version 2.0 NV1-7 (Current)
+ 
+    ✨  Process Ghosting injection technique
+    ✨  ICMP C2 tunneling channel
+    ✨  Argon2 string obfuscation
+    ✨  Selective D1rkSleep encryption
+    ✨  Polymorphic syscall stubs
+    ⚙️  Multi-channel C2 failover logic
+    ⚙️  Sandbox detection accuracy (6-point methodology)
+    ⚙️  Anti-debugging capabilities (5-layer detection)
+    🔐  Windows 11 build 22000+ SSN compatibility
+    🔐  Memory leak in nonce tracker cleanup
+    🛡️  Comprehensive report generation
 
 ### Version 1.5
-- Core process injection techniques
-- Basic C2 communication
-- AMSI/ETW bypass
+ Version 1.5 ( upgrade )
+ 
+    ✨  Core process injection techniques
+    🔍 Basic C2 communication
+    ⚙️ AMSI/ETW bypass
 
 ### Version 1.0
-- Initial release
-- Syscall engine foundation
-- Basic evasion techniques
+Version 1.0 Beta ( early )
+
+    ✨ Initial release
+    🔐 Advanced obfuscation (ChaCha20-Poly1305)
+    🔍 Syscall engine for EDR studies
+    🛡️ Anti-analysis framework
+    📊 Automated research reporting
+    🐳 Docker support
+    ⚙️ Pre-commit hooks
+    📦 Development dependencies
+
 
 ---
 
