@@ -12,6 +12,7 @@ Riset teknik evasion modern untuk memperkuat pertahanan siber Indonesia.
 [![Stars](https://img.shields.io/github/stars/QurolVoV/phoenix-evasion-research?style=social)](https://github.com/QurolVoV/phoenix-evasion-research/stargazers)
 [![Linux CI](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml/badge.svg?branch=main&event=push)](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml)
 [![Windows CI](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml/badge.svg?event=workflow_dispatch&label=Windows%20Tests)](https://github.com/QurolVoV/phoenix-evasion-research/actions/workflows/ci-cd.yml)
+[![CI/CD Pipeline](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions/workflows/ci-cd.yml)
 
 > **100% edukasi • 0% offensive • Untuk Blue Team & Researcher Indonesia**
 
