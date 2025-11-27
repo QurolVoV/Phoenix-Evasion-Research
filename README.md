@@ -2,81 +2,77 @@
 
 ![Banner](https://github.com/user-attachments/assets/2e786b42-cf54-4787-a40a-444d0c81cdca)
 
-**Educational Windows Evasion Research Framework**  
-Riset teknik evasion modern untuk memperkuat pertahanan siber Indonesia.
+**Advanced Educational Windows Evasion Research Framework**  
+Modern evasion techniques research for strengthening cybersecurity defenses.
 
-
-[![Donasi Saweria](https://img.shields.io/badge/☕_Dukung_WoodLabs-Saweria.co/WoodLabs-ff6b35?style=for-the-badge&logo=coffee&logoColor=white)](https://saweria.co/WoodLabs)
+[![Support WoodLabs](https://img.shields.io/badge/☕_Support_WoodLabs-Donate-ff6b35?style=for-the-badge&logo=coffee&logoColor=white)](https://saweria.co/WoodLabs)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-green.svg)](https://python.org)
 [![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Linux_%7C_macOS-lightgrey.svg)](https://github.com/QurolVoV/phoenix-evasion-research)
 [![Stars](https://img.shields.io/github/stars/QurolVoV/phoenix-evasion-research?style=social)](https://github.com/QurolVoV/phoenix-evasion-research/stargazers)
 [![CI/CD Pipeline](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions/workflows/ci-cd.yml)
 
-
-[![Python 3.8+](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
-[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen)]()
-
-> **100% edukasi • 0% offensive • Untuk Blue Team & Researcher Indonesia**
+> **100% Educational • 0% Offensive • For Blue Teams & Security Researchers**
 
 ---
 
-## Dukung Riset Kami
+## 🌟 Support the Project
 
-Proyek ini 100% gratis dan open-source berkat dukungan kalian semua.  
-Setiap donasi membantu kami merilis riset & workshop gratis untuk komunitas Indonesia!
+This project is 100% free and open-source thanks to community support.  
+Every donation helps us release free research and tools to the security community!
 
 [![Saweria QR](https://saweria.co/qr/3583835?size=200)](https://saweria.co/WoodLabs)  
-**https://saweria.co/WoodLabs**
+**Donate at: https://saweria.co/WoodLabs**
 
 ---
 
----
+## 📋 Table of Contents
 
-## 📋 Daftar Isi
-
-- [Tentang Proyek](#tentang-proyek)
-- [Fitur Utama](#fitur-utama)
+- [About](#about)
+- [Key Features](#key-features)
 - [Requirements](#requirements)
-- [Instalasi](#instalasi)
-- [Penggunaan Cepat](#penggunaan-cepat)
-- [Struktur Proyek](#struktur-proyek)
-- [Core Modules](#core-modules)
-- [Kontribusi](#kontribusi)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Project Structure](#project-structure)
+- [Usage Examples](#usage-examples)
+- [Contributing](#contributing)
+- [Troubleshooting](#troubleshooting)
+- [FAQ](#faq)
 - [Disclaimer & Legal](#disclaimer--legal)
+- [Support & Contact](#support--contact)
+- [License](#license)
 
 ---
 
-## 🎯 Tentang Proyek
+## 🎯 About
 
-Phoenix Evasion Research adalah **framework open-source gratis** yang dirancang untuk membantu profesional cybersecurity memahami teknik evasion modern yang digunakan oleh malware dan APT tingkat lanjut.
+Phoenix Evasion Research is a **free, open-source framework** designed to help cybersecurity professionals understand modern evasion techniques used by advanced malware and APT groups.
 
-**Fokus:** Defensive Security | Educational Purpose | Zero Offensive Code
+**Focus:** Defensive Security | Educational Purpose | Zero Offensive Code
 
-### Untuk Siapa?
+### Who Is This For?
 
-✅ Blue Team & SOC Analyst  
-✅ Peneliti Keamanan Siber  
-✅ Mahasiswa & Akademisi  
-✅ Red Team (dengan autorisasi)  
+✅ Blue Team & SOC Analysts  
+✅ Cybersecurity Researchers  
+✅ Students & Academics  
+✅ Authorized Red Teams  
 
-### Apa yang TIDAK ada di sini?
+### What's NOT Included
 
-❌ Process Injection | ❌ C2 Infrastructure | ❌ AMSI Bypass | ❌ Persistence Mechanism
+❌ Process Injection | ❌ C2 Infrastructure | ❌ AMSI Bypass | ❌ Persistence Mechanisms
 
 ---
 
-## ✨ Fitur Utama
+## ✨ Key Features
 
-| Fitur | Deskripsi |
-|-------|-----------|
-| 🔐 **Advanced Encryption** | ChaCha20-Poly1305 + PBKDF2-HMAC-SHA512 (500k iterasi) |
-| 🔍 **Syscall Engine** | Ekstraksi SSN langsung dari ntdll.dll (on-disk) |
-| 🛡️ **Anti-Analysis** | Deteksi debugger, VM, sandbox (multi-teknik) |
+| Feature | Description |
+|---------|-------------|
+| 🔐 **Advanced Encryption** | ChaCha20-Poly1305 + PBKDF2-HMAC-SHA512 (500k iterations) |
+| 🔍 **Syscall Engine** | Direct SSN extraction from clean ntdll.dll (on-disk) |
+| 🛡️ **Anti-Analysis Detection** | Debugger, VM, and sandbox detection (multi-technique) |
 | 🔀 **Polymorphic Code** | Lazy loading + dynamic SSN resolution |
-| 📊 **Auto Reporting** | Generate laporan riset dalam Markdown |
-| 📦 **100% Open Source** | MIT License - Gratis untuk pendidikan & riset |
+| 📊 **Automated Reporting** | Generate research reports in Markdown format |
+| 📦 **100% Open Source** | MIT License - Free for education & research |
 
 ---
 
@@ -86,17 +82,17 @@ Phoenix Evasion Research adalah **framework open-source gratis** yang dirancang 
 - **Python:** 3.8+
 - **RAM:** 2GB
 - **Storage:** 100MB
-- **OS:** Windows 10+ atau Linux
+- **OS:** Windows 10+ or Linux
 
 ### Recommended
 - **Python:** 3.10+
 - **RAM:** 8GB+
 - **Storage:** 1GB
-- **OS:** Windows 11 atau Ubuntu 20+
+- **OS:** Windows 11 or Ubuntu 20+
 
 ---
 
-## 📥 Instalasi
+## 📥 Installation
 
 ### 1. Clone Repository
 
@@ -132,7 +128,7 @@ pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
-### 4. Verifikasi Instalasi
+### 4. Verify Installation
 
 ```bash
 python -c "import sys; sys.path.insert(0, 'src'); from phoenix_evasion_research import *; print('✅ Installation successful!')"
@@ -140,270 +136,286 @@ python -c "import sys; sys.path.insert(0, 'src'); from phoenix_evasion_research 
 
 ---
 
-## 🚀 Penggunaan Cepat
+## 🚀 Quick Start
 
-### Menjalankan Framework
+### Run the Framework
 
 ```bash
 python src/phoenix_evasion_research.py --help
 ```
 
-### Contoh Penggunaan Dasar
+### Basic Usage Examples
 
 ```bash
-# Analisis obfuscation
+# Analyze obfuscation
 python src/phoenix_evasion_research.py --module obfuscation --target "test_string"
 
-# Analisis syscall
+# Analyze syscalls
 python src/phoenix_evasion_research.py --module syscall
 
-# Deteksi evasion
+# Detect evasion techniques
 python src/phoenix_evasion_research.py --module evasion --output report.md
 
-# Jalankan semua module
+# Run all modules
 python src/phoenix_evasion_research.py --module all --output full_report.md
 ```
 
-### Opsi Command Line
+### Command Line Options
 
 ```
---help, -h                      Tampilkan bantuan
+--help, -h                      Show help message
 --module {all, obfuscation, syscall, evasion}
-                                Pilih module untuk dijalankan
---target TARGET                 Target/input untuk analisis
---output OUTPUT                 Output file untuk laporan (default: report.md)
+                                Select modules to run
+--target TARGET                 Target/input for analysis
+--output OUTPUT                 Output file for report (default: report.md)
 ```
 
 ---
 
-## 📁 Struktur Proyek
+## 📁 Project Structure
 
 ```
 Phoenix-Evasion-Research/
 ├── src/
-│   ├── phoenix_evasion_research.py    # Main framework
-│   ├── obfuscator.py                  # String obfuscation module
-│   ├── syscall_engine.py              # Syscall analysis engine
-│   └── evasion_detector.py            # Anti-analysis detection
-├── tests/                              # Test suite
-│   ├── test_obfuscation.py
-│   ├── test_syscall.py
-│   └── test_evasion.py
-├── requirements.txt                    # Python dependencies
-├── .github/workflows/
-│   └── ci-cd.yml                      # CI/CD Pipeline
-├── README.md                           # Dokumentasi ini
+│   └── phoenix_evasion_research.py    # Main framework
+├── k8s/                                # KDS configurations
+├── .github/
+│   └── workflows/
+│       └── ci-cd.yml                  # CI/CD Pipeline
+├── .gitignore                          # Git ignore rules
+├── .dockerignore                       # Docker ignore rules
+├── Dockerfile                          # Docker configuration
 ├── LICENSE                             # MIT License
-└── CONTRIBUTING.md                     # Guidelines kontribusi
+├── README.md                           # Documentation
+├── CONTRIBUTING.md                     # Contribution guidelines
+├── SECURITY.md                         # Security policy
+├── requirements.txt                    # Python dependencies
+├── requirements-dev.txt                # Development dependencies
+├── setup.py                            # Setup configuration
+├── pyproject.toml                      # Project metadata
+├── docker-compose.yml                  # Docker Compose
+├── .pre-commit-config.yaml             # Pre-commit hooks
+└── .dockerignore                       # Docker ignore
+
 ```
 
 ---
 
-## 🔧 Core Modules
+## 💻 Usage Examples
 
-### PhoenixFramework
-Framework utama yang mengorkestra seluruh penelitian evasion. Mengelola workflow, input/output, dan reporting otomatis.
+### Example 1: Basic Framework Usage
 
-**Usage:**
+```bash
+python src/phoenix_evasion_research.py --help
+```
+
+### Example 2: Obfuscation Analysis
+
+```bash
+python src/phoenix_evasion_research.py \
+  --module obfuscation \
+  --target "sensitive_data"
+```
+
+### Example 3: Syscall Analysis
+
+```bash
+python src/phoenix_evasion_research.py \
+  --module syscall \
+  --output syscall_analysis.md
+```
+
+### Example 4: Full Evasion Research
+
+```bash
+python src/phoenix_evasion_research.py \
+  --module all \
+  --target "test_target" \
+  --output complete_research.md
+```
+
+### Example 5: Python API Usage
+
 ```python
 import sys
 sys.path.insert(0, 'src')
-from phoenix_evasion_research import PhoenixFramework
+from phoenix_evasion_research import *
 
-framework = PhoenixFramework()
-framework.run_assessment(target="example.com", output="report.md")
-```
-
-### PhoenixObfuscator
-Modul enkripsi string dan data protection menggunakan ChaCha20-Poly1305.
-
-**Fitur:**
-- Authenticated encryption dengan PBKDF2
-- Nonce management otomatis
-- Thread-safe operations
-- TTL cleanup
-
-### HadesSyscallEngine
-Engine untuk ekstraksi dan analisis system calls dari ntdll.dll.
-
-**Fitur:**
-- Direct SSN extraction
-- Memory caching
-- Windows 10/11 detection
-- SSN validation
-
-### SecurityEvasion
-Modul anti-analysis dan detection orchestration.
-
-**Fitur:**
-- Debugger detection
-- VM/Sandbox detection
-- Environment validation
-- Multi-teknik evasion analysis
-
----
-
-## 🧪 Testing
-
-### Jalankan Semua Tests
-
-```bash
-pytest tests/ -v
-```
-
-### Test dengan Coverage Report
-
-```bash
-pytest tests/ -v --cov=src/phoenix_evasion_research --cov-report=html
-```
-
-### Test Spesifik Module
-
-```bash
-# Test obfuscation
-pytest tests/test_obfuscation.py -v
-
-# Test syscall
-pytest tests/test_syscall.py -v
-
-# Test evasion
-pytest tests/test_evasion.py -v
+# Your custom research code here
+print("Phoenix Evasion Research Framework loaded successfully!")
 ```
 
 ---
 
-## 🤝 Kontribusi
+## 🤝 Contributing
 
-Kami sangat menerima kontribusi dari komunitas! 
+We welcome contributions from the community!
 
-### Cara Berkontribusi
+### How to Contribute
 
-1. **Fork** repository ini
-2. **Buat feature branch**
+1. **Fork** this repository
+2. **Create a feature branch**
    ```bash
-   git checkout -b feature/nama-fitur
+   git checkout -b feature/your-feature-name
    ```
-3. **Commit perubahan Anda**
+3. **Make your changes** and commit
    ```bash
-   git commit -m "Add: deskripsi fitur baru"
+   git commit -m "Feature: add your feature description"
    ```
-4. **Push ke branch**
+4. **Push to your branch**
    ```bash
-   git push origin feature/nama-fitur
+   git push origin feature/your-feature-name
    ```
-5. **Buat Pull Request** dengan deskripsi detail
+5. **Create a Pull Request** with detailed description
 
-### Area yang Dibutuhkan
+### Areas We Need Help With
 
 - Advanced evasion techniques
 - Cross-platform support
 - Detection heuristics improvement
 - Documentation enhancement
 - Performance optimization
+- Bug fixes and testing
 
-Lihat [CONTRIBUTING.md](CONTRIBUTING.md) untuk guidelines lengkap.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
 ## 🐛 Troubleshooting
 
-### Dependency Error
+### Dependency Installation Error
+
 ```bash
 pip install -r requirements.txt --upgrade
 ```
 
 ### Import Error
+
 ```bash
-# Pastikan berada di root directory
+# Ensure you're in the root directory
 export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 python src/phoenix_evasion_research.py --help
 ```
 
 ### Windows Permission Denied
+
 ```cmd
-# Jalankan Command Prompt atau PowerShell as Administrator
+# Run Command Prompt or PowerShell as Administrator
 python src/phoenix_evasion_research.py --help
 ```
 
-### Virtual Environment Issue
+### Virtual Environment Issues
+
 ```bash
-# Hapus venv lama dan buat ulang
+# Remove old venv and recreate
 rm -rf venv  # Linux/macOS
 rmdir /s venv  # Windows
+
+# Create new environment
 python -m venv venv
-source venv/bin/activate  # atau venv\Scripts\activate
+source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
+
+### Module Not Found Error
+
+```bash
+# Add src directory to Python path
+export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"  # Linux/macOS
+set PYTHONPATH=%PYTHONPATH%;%cd%\src  # Windows
+```
+
+### CI/CD Pipeline Failures
+
+Check the [GitHub Actions](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions) tab for detailed logs.
 
 ---
 
 ## ❓ FAQ
 
-**Q: Apakah framework ini aman digunakan?**  
-A: Ya, untuk keperluan riset dan edukasi yang sah. Tidak ada kode berbahaya di dalam repository.
+**Q: Is this framework safe to use?**  
+A: Yes, for legitimate research and education purposes. There is no malicious code in the repository. All code is educational and defensive-focused.
 
-**Q: Apakah legal menggunakan framework ini?**  
-A: Framework ini adalah educational tool. Gunakan hanya dengan izin yang sesuai dan patuhi hukum lokal.
+**Q: Is it legal to use this framework?**  
+A: This is an educational tool designed for authorized security research. Use only with proper authorization and comply with local laws.
 
-**Q: Apakah antivirus akan mendeteksi ini?**  
-A: Mungkin, karena framework ini mempelajari teknik evasion. Ini normal untuk research tools.
+**Q: Will antivirus detect this?**  
+A: Possibly, since the framework studies evasion techniques. This is normal for research tools. Detection depends on your antivirus and usage patterns.
 
-**Q: Bisakah digunakan untuk keperluan komersial?**  
-A: Ya, under MIT License dengan catatan compliance terhadap guidelines legal.
+**Q: Can it be used commercially?**  
+A: Yes, under the MIT License. Ensure compliance with local legal guidelines and responsible use policies.
+
+**Q: How do I report a security vulnerability?**  
+A: Please see [SECURITY.md](SECURITY.md) for responsible disclosure guidelines.
 
 ---
 
 ## 🔒 Disclaimer & Legal
 
-### EDUCATIONAL & RESEARCH USE ONLY
+### EDUCATIONAL AND RESEARCH USE ONLY
 
-Framework ini dirancang untuk:
-- ✅ Riset keamanan yang diotorisasi
-- ✅ Pengembangan defensive security
-- ✅ Training akademik
-- ✅ Meningkatkan threat detection
+This framework is designed for:
+- ✅ Authorized security research
+- ✅ Defensive security development
+- ✅ Academic training
+- ✅ Threat detection improvement
 
-### PENGGUNAAN YANG DILARANG
+### PROHIBITED USES
 
-- ❌ Malicious/unauthorized access
-- ❌ Testing tanpa autorisasi
-- ❌ Weaponization & offensive use
-- ❌ Melanggar hukum
+- ❌ Malicious or unauthorized access
+- ❌ Testing without authorization
+- ❌ Weaponization and offensive use
+- ❌ Violating laws and regulations
 
-### Tanggung Jawab Pengguna
+### User Responsibilities
 
-1. Dapatkan autorisasi yang diperlukan sebelum penggunaan
-2. Patuhi semua hukum dan regulasi lokal
-3. Lindungi dan jaga kerahasiaan findings
-4. Lakukan responsible disclosure
+1. Obtain proper authorization before use
+2. Comply with all local laws and regulations
+3. Protect and maintain confidentiality of findings
+4. Practice responsible disclosure
 
 ### No Warranty
 
-Authors dan contributors tidak bertanggung jawab atas:
-- Misuse atau abuse framework
-- Damage atau loss of data
-- Legal consequences dari penggunaan tidak sah
-- Segala konsekuensi negatif lainnya
+Authors and contributors are not responsible for:
+- Framework misuse or abuse
+- Data loss or damage
+- Legal consequences from unauthorized use
+- Any other negative consequences
 
 ---
 
-## 📞 Support & Contact 🌟 Support the Project
+## 📞 Support & Contact
 
 ### GitHub
 - **Issues:** [GitHub Issues](https://github.com/QurolVoV/Phoenix-Evasion-Research/issues)
 - **Discussions:** [GitHub Discussions](https://github.com/QurolVoV/Phoenix-Evasion-Research/discussions)
 
 ### Email
-📧 **Security-related:** redmoonstonee@gmail.com
+📧 **Security-related inquiries:** redmoonstonee@gmail.com
 
-If this framework helps your research or educational efforts, please consider supporting our work:  
-[![Saweria](https://saweria.co/qr/3583835)](https://saweria.co/WoodLabs)
+### Getting Help
 
-- Sustained development and updates
-- New features
-- Community support
-- Open research
+1. Check [documentation](README.md)
+2. Search [existing issues](https://github.com/QurolVoV/Phoenix-Evasion-Research/issues)
+3. Ask in [Discussions](https://github.com/QurolVoV/Phoenix-Evasion-Research/discussions)
+4. Email for urgent matters
 
+---
+
+## 🌟 Support Our Research
+
+If you find this project valuable and want to support ongoing security research:
+
+[![Donate Saweria](https://img.shields.io/badge/%F0%9F%92%96_Donate-Saweria-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://saweria.co/WoodLabs)
+
+Your support enables us to:
+- Continue open-source security research
+- Maintain and regularly update the framework
+- Develop new defensive security features
+- Support the cybersecurity community with free tools
+- Conduct advanced threat intelligence research
+
+**Thank you for supporting WoodLabs Security Research!**
 
 ---
 
@@ -412,9 +424,12 @@ If this framework helps your research or educational efforts, please consider su
 ### Version 1.0 Beta (2025-11-25)
 - ✨ Initial release
 - 🔐 Advanced obfuscation (ChaCha20-Poly1305)
-- 🔍 Syscall engine untuk EDR studies
+- 🔍 Syscall engine for EDR studies
 - 🛡️ Anti-analysis framework
 - 📊 Automated research reporting
+- 🐳 Docker support
+- ⚙️ Pre-commit hooks
+- 📦 Development dependencies
 
 ---
 
@@ -428,8 +443,7 @@ Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+copies of the Software, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
 copies or substantial portions of the Software.
@@ -438,36 +452,41 @@ copies or substantial portions of the Software.
 
 ---
 
-## Support Our Research 💖
+## 🙏 Thank You
 
-If you find this project valuable and want to support our ongoing security research, consider making a donation.  
-**Your support helps us maintain and improve this framework for the cybersecurity community.**
+If this project helps your research or educational efforts:
 
-[![Donate Saweria](https://img.shields.io/badge/%F0%9F%92%96_Donate-Saweria-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://saweria.co/WoodLabs)
+- ⭐ **Star** this repository
+- 🍴 **Fork** and contribute
+- 💬 **Share** feedback and suggestions
+- 📧 **Support** us for continued development
 
-Your support enables us to:
-- Continue open-source security research
-- Maintain and update the framework regularly
-- Develop new defensive security features
-- Support the cybersecurity community with free tools
-- Conduct advanced threat intelligence research
+---
+
+## 🔗 Quick Links
+
+- [GitHub Repository](https://github.com/QurolVoV/Phoenix-Evasion-Research)
+- [Report Issues](https://github.com/QurolVoV/Phoenix-Evasion-Research/issues)
+- [Join Discussions](https://github.com/QurolVoV/Phoenix-Evasion-Research/discussions)
+- [Contributing Guidelines](CONTRIBUTING.md)
+- [Security Policy](SECURITY.md)
+- [Donate & Support](https://saweria.co/WoodLabs)
+
+---
+
+## 🌟 Support the Project
+
+If this framework helps your research or educational efforts, please consider supporting our work:  
+[![Saweria](https://saweria.co/qr/3583835)](https://saweria.co/WoodLabs)
+
+- Sustained development and updates
+- New features
+- Community support
+- Open research
 
 **Thank you for supporting WoodLabs Security Research!**
 
 ---
-
-## 🙏 Terima Kasih
-
-Proyek ini 100% gratis. Jika project ini membantu riset atau pembelajaran Anda:
-
-- ⭐ **Star** repository ini
-- 🍴 **Fork** dan berkontribusi
-- 💬 **Share** feedback dan suggestions
-- 📧 **Support** kami untuk continued development
-
----
-
-**Building Better Defenses Through Understanding Evasion**
 
 <div align="center">
 🔥 Phoenix-Evasion-Research Framework
