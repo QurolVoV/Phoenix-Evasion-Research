@@ -33,11 +33,11 @@ jobs:
       - name: Test with pytest
         run: |
           # Karena belum ada folder tests/, kita buat test sederhana sementara
-          pytest -v Woodlabs_Phoenix_Framework_beta.py || echo "No tests yet, just checking import"
+          pytest -v phoenix_evasion_research.py || echo "No tests yet, just checking import"
 
       - name: Simple import test (pastikan tidak crash saat import)
         run: |
-          python -c "import Woodlabs_Phoenix_Framework_beta; print('Import berhasil!')"
+          python -c "import phoenix_evasion_research; print('Import berhasil!')"
 
   # build:
   #   needs: test
