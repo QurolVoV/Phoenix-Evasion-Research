@@ -1,6 +1,6 @@
 # 🔥 Phoenix Evasion Research Framework
 
-![Banner](https://github.com/user-attachments/assets/2e786b42-cf54-4787-a40a-444d0c81cdca)
+![Banner](https://github.com/user-attachments/assets/ced6b386-30f2-4e66-ae95-33aa0012ff4f)
 
 **Advanced Educational Windows Evasion Research Framework**  
 Modern evasion techniques research for strengthening cybersecurity defenses.
@@ -393,6 +393,7 @@ Authors and contributors are not responsible for:
 ### Email
 📧 **Security-related inquiries:** redmoonstonee@gmail.com
 
+![Image](https://github.com/user-attachments/assets/2e786b42-cf54-4787-a40a-444d0c81cdca)
 ### Getting Help
 
 1. Check [documentation](README.md)
