@@ -6,6 +6,8 @@
 Modern evasion techniques research for strengthening cybersecurity defenses.
 
 [![Support WoodLabs](https://img.shields.io/badge/☕_Support_WoodLabs-Donate-ff6b35?style=for-the-badge&logo=coffee&logoColor=white)](https://saweria.co/WoodLabs)
+[![Donate PayPal](https://img.shields.io/badge/☕_Buy_me_a_coffee-PayPal-009cde?style=for-the-badge&logo=paypal)](https://paypal.me/RHaryoPn)
+
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python](https://img.shields.io/badge/Python-3.8%2B-green.svg)](https://python.org)
 [![Platform](https://img.shields.io/badge/Platform-Windows_%7C_Linux_%7C_macOS-lightgrey.svg)](https://github.com/QurolVoV/phoenix-evasion-research)
@@ -13,16 +15,6 @@ Modern evasion techniques research for strengthening cybersecurity defenses.
 [![CI/CD Pipeline](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/QurolVoV/Phoenix-Evasion-Research/actions/workflows/ci-cd.yml)
 
 > **100% Educational • 0% Offensive • For Blue Teams & Security Researchers**
-
----
-
-## 🌟 Support the Project
-
-This project is 100% free and open-source thanks to community support.  
-Every donation helps us release free research and tools to the security community!
-
-[![Saweria QR](https://saweria.co/qr/3583835?size=200)](https://saweria.co/WoodLabs)  
-**Donate at: https://saweria.co/WoodLabs**
 
 ---
 
@@ -56,6 +48,22 @@ Phoenix Evasion Research is a **free, open-source framework** designed to help c
 ✅ Cybersecurity Researchers  
 ✅ Students & Academics  
 ✅ Authorized Red Teams  
+
+⚡ What people are actually doing with Phoenix right now
+
+- “Just found out why our EDR misses 40% of fileless threats” – Senior Blue Teamer
+- “My students finally understand direct syscalls” – University professor
+- “Generated a 20-page detection lab in 8 seconds” – Threat hunting lead
+
+🧠 Features that make defenders smile
+
+- Live SSN ripping from pristine ntdll.dll
+- ChaCha20-Poly1305 strings that laugh at static analysis
+- Anti-VM / anti-debug / anti-sandbox checks used by real APTs
+- Polymorphic stub generation on the fly
+- Beautiful auto-generated Markdown reports (perfect for execs & labs)
+
+Zero malice. 100% education. Maximum power.
 
 ### What's NOT Included
 
@@ -403,23 +411,6 @@ Authors and contributors are not responsible for:
 
 ---
 
-## 🌟 Support Our Research
-
-If you find this project valuable and want to support ongoing security research:
-
-[![Donate Saweria](https://img.shields.io/badge/%F0%9F%92%96_Donate-Saweria-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://saweria.co/WoodLabs)
-
-Your support enables us to:
-- Continue open-source security research
-- Maintain and regularly update the framework
-- Develop new defensive security features
-- Support the cybersecurity community with free tools
-- Conduct advanced threat intelligence research
-
-**Thank you for supporting WoodLabs Security Research!**
-
----
-
 ## 📝 Changelog
 
 ### Version 1.0 Beta (2025-11-25)
@@ -453,7 +444,26 @@ copies or substantial portions of the Software.
 
 ---
 
-## 🙏 Thank You
+##🌟 Support the Project 🙏 Thank You
+
+If this framework helps your research or educational efforts, please consider supporting our work:  
+
+[![Donate Saweria](https://img.shields.io/badge/%F0%9F%92%96_Donate-Saweria-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://saweria.co/WoodLabs)
+[![Donate PayPal](https://img.shields.io/badge/☕_Buy_me_a_coffee-PayPal-009cde?style=for-the-badge&logo=paypal)](https://paypal.me/RHaryoPn)
+
+
+Your support enables us to:
+- Continue open-source security research
+- Maintain and regularly update the framework
+- Develop new defensive security features
+- Support the cybersecurity community with free tools
+- Conduct advanced threat intelligence research
+- Sustained development and updates
+- New features
+- Community support
+- Open research
+
+**Thank You for Supporting Defensive Cybersecurity Research! 💙**
 
 If this project helps your research or educational efforts:
 
@@ -462,8 +472,6 @@ If this project helps your research or educational efforts:
 - 💬 **Share** feedback and suggestions
 - 📧 **Support** us for continued development
 
----
-
 ## 🔗 Quick Links
 
 - [GitHub Repository](https://github.com/QurolVoV/Phoenix-Evasion-Research)
@@ -471,55 +479,46 @@ If this project helps your research or educational efforts:
 - [Join Discussions](https://github.com/QurolVoV/Phoenix-Evasion-Research/discussions)
 - [Contributing Guidelines](CONTRIBUTING.md)
 - [Security Policy](SECURITY.md)
-- [Donate & Support](https://saweria.co/WoodLabs)
-
----
-
-## 🌟 Support the Project
-
-If this framework helps your research or educational efforts, please consider supporting our work:  
-[![Saweria](https://saweria.co/qr/3583835)](https://saweria.co/WoodLabs)
-
-- Sustained development and updates
-- New features
-- Community support
-- Open research
-
-**Thank you for supporting WoodLabs Security Research!**
+  
+- [![Donate Saweria](https://img.shields.io/badge/%F0%9F%92%96_Donate-Saweria-FF5E5B?style=for-the-badge&logo=ko-fi&logoColor=white)](https://saweria.co/WoodLabs)
+- [![Donate PayPal](https://img.shields.io/badge/☕_Buy_me_a_coffee-PayPal-009cde?style=for-the-badge&logo=paypal)](https://paypal.me/RHaryoPn)
 
 ---
 
 <div align="center">
 🔥 Phoenix-Evasion-Research Framework
 Advanced Security Research for Defensive Excellence
-<br>Get Started • Documentation • Examples • Support
+<br>Get Started • Documentation • Support
 <br>
-Building better defenses through understanding evasion
+Building better defenses through understanding evasion,
+Understanding evasion today → Stronger defenses tomorrow  
 <br>
 Woodlabs Security Research • 2025
 </div>
 
 ----
 
-🔥🎯 #Sneak Peek: NV1-7 Core Capabilities
+<div align="center">
+  
+  ## 🔥🎯 Sneak Peek: NV1-7 Core Capabilities
+  
+  # VERSI TERBATAS #
+  
+</div>
 
-----
-
-# VERSI TERBATAS #
-
-----
+---
 
 <div align="center">
-# Phoenix Framework 2025 – NV1-7 (Woodlabs Edition)  
+# Phoenix Framework 2025 – NV1-7 (Woodlabs Edition)  #
 **Next-Generation Red Team & Evasion Research Framework**
 
 [ P H O E N I X  2 0 2 5  •  W O O D L A B S  N V 1 - 7 ]
 
 Woodlabs Security Research © 2025
 
-</div>
-
 **The Upgrade Robust, fully in-memory, multi-technique evasion & post-exploitation framework.**
+
+</div>
 
 ----
 
@@ -961,6 +960,8 @@ Phoenix Framework builds upon research and techniques pioneered by:
 - Dreamworks Security (Memory manipulation techniques)
 - NIST (Cryptographic standards)
 - Windows security research community
+
+
 ----
 
 <div align="center">
