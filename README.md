@@ -84,6 +84,103 @@ Zero malice. 100% education. Maximum power.
 
 ---
 
+## 🔬 Core Architecture & Technical Deep Dive
+
+Framework ini dibangun di atas prinsip-prinsip *low-level system manipulation* untuk menghindari deteksi. Berikut adalah diagram arsitektur kunci yang menonjolkan kapabilitasnya:
+
+### D1rkSleep: Memory Encryption & Evasion
+
+D1rkSleep adalah mekanisme *memory encryption* selektif yang aktif selama interval tidur, mencegah pemindai memori EDR mendeteksi *payload* Anda.
+
+```
+graph TD
+    subgraph Execution_Phase [Fase Eksekusi Aktif]
+        A[Payload Start] --> B[Execute Malicious Logic]
+        B --> C{Sleep Interval?}
+    end
+
+    subgraph D1rkSleep_Mechanism [Mekanisme D1rkSleep]
+        C -- Yes --> D[Retrieve Return Address]
+        D --> E[Identify Image/Payload Sections]
+        E --> F[AES-256-CTR Encryption]
+        F --> G[Obfuscate Pointer/Context]
+        G --> H[Enter Windows Sleep/Delay Execution]
+    end
+
+    subgraph Wakeup_Phase [Fase Wake-up & Integrity]
+        H --> I[Execution Resumes]
+        I --> J[Decrypt Payload Sections]
+        J --> K[Integrity/Checksum Verification]
+        K --> L[Restore Execution Context]
+        L --> B
+    end
+
+    style D1rkSleep_Mechanism fill:#f96,stroke:#333,stroke-width:2px
+    style Execution_Phase fill:#bbf,stroke:#333
+    style Wakeup_Phase fill:#dfd,stroke:#333
+```
+Context Aware: Mengidentifikasi lokasi payload di memori secara dinamis sebelum tidur.
+
+    Selective Encryption: Menggunakan AES-256-CTR untuk mengenkripsi bagian sensitif executable.
+
+    Signature Evasion: Membuat payload tidak dikenali (high entropy) oleh pemindai memori EDR.
+
+    Integrity Enforcement: Memastikan konteks eksekusi stabil pasca-dekripsi.
+
+HadesSyscallEngine: Indirect Syscall Evasion
+HadesSyscallEngine mengimplementasikan indirect syscalls untuk mem-bypass user-mode hooks yang ditempatkan oleh solusi EDR, memastikan eksekusi kode Anda tetap tidak terdeteksi pada lapisan API.
+
+```
+graph LR
+    subgraph User_Mode [User Mode]
+        A[Application Code] --> B[HadesSyscallEngine]
+        B --> C{Hook Detection}
+        C -- Hooked NTDLL --> D[Locate Clean SSN]
+        D --> E[Prepare Indirect Call]
+    end
+
+    subgraph Kernel_Transition [Bypassing Hooks]
+        E --> F[Jump to 'syscall' Instruction in NTDLL]
+        F --> G[Kernel Mode Transition]
+    end
+
+    style B fill:#f96,stroke:#333
+    style F fill:#ccf,stroke:#333,stroke-dasharray: 5 5
+```
+
+Hook Awareness: Mendeteksi hook pada fungsi-fungsi penting di NTDLL.
+Clean SSN Resolution: Mendapatkan System Service Number (SSN) langsung dari NTDLL yang belum di-hook.
+Indirect Execution: Memanggil syscall instruction secara langsung, melewati lapisan API hooking.
+
+---
+
+💡 Technical Highlights
+
+Phoenix Evasion Framework menonjol dengan fitur-fitur teknis inti berikut:
+
+    Custom Syscall Implementation: Implementasi indirect syscalls melalui HadesSyscallEngine untuk menghindari deteksi berbasis user-mode hooks.
+
+    Memory Encryption: Penggunaan D1rkSleep untuk mengenkripsi bagian sensitif dari payload di memori selama interval idle, mempersulit pemindaian EDR.
+
+    Advanced Injection Techniques: Mendemonstrasikan teknik injeksi proses fundamental seperti Process Ghosting dan Early Bird APC untuk eksekusi yang sulit dideteksi.
+
+    Polymorphic Architecture: Dirancang untuk meminimalkan static dan behavioral signatures, sehingga payload sulit dikenali oleh analisis tradisional.
+
+    Modular & Extensible: Struktur kode yang memungkinkan peneliti untuk dengan mudah mengintegrasikan dan menguji teknik penghindaran baru.
+
+⚙️ Operational Security (OPSEC) Focus: Zero Disk Artifacts
+
+Salah satu prinsip utama di balik Phoenix adalah komitmen terhadap Zero Disk Artifacts. Framework ini dirancang untuk beroperasi sepenuhnya di memori, menghindari penulisan file ke disk atau modifikasi registri yang tidak perlu.
+
+    100% In-Memory Execution: Seluruh payload dan komponen eksekusi berjalan di RAM, menghilangkan jejak forensik pada sistem file.
+
+    Minimized Footprint: Dirancang untuk memiliki memory footprint yang kecil, mengurangi kemungkinan deteksi anomali oleh EDR yang memonitor penggunaan sumber daya.
+
+    Evades File-Based Detection: Mampu menghindari deteksi yang mengandalkan analisis hash, signature, atau behavioral analysis pada file yang disimpan di disk.
+
+---
+
+
 ## 💻 Requirements
 
 ### Minimum
